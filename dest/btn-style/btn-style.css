@@ -14,7 +14,8 @@ table, caption, tbody, tfoot, thead, tr, th, td {
   font-style: inherit;
   font-size: 100%;
   font-family: inherit;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+  box-sizing: border-box; }
 
 /* remember to define focus styles! */
 :focus {
@@ -101,10 +102,10 @@ blockquote, q {
   animation-direction: forward; }
 
 footer {
-  bottom: 0;
   width: 100%;
   background-color: #191919;
-  z-index: -1; }
+  position: absolute;
+  bottom: 0; }
   footer div.footer {
     padding: 25px 0;
     display: flex;
@@ -202,9 +203,9 @@ footer {
 
 header {
   background-color: #191919;
-  position: fixed;
-  top: 0;
   width: 100%;
+  position: absolute;
+  top: 0;
   display: flex;
   justify-content: space-between;
   z-index: 1; }
