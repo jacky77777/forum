@@ -8,28 +8,19 @@ watch = require('gulp-watch');
 fileinclude = require('gulp-file-include');
 
 //搬家
-<<<<<<< HEAD
+gulp.task('concatHtml', function() {
+    //do sometime
+    gulp.src('./dev/html/index/earth/**/*').pipe(gulp.dest('dest/index/earth/'))
+});
 gulp.task('concatjs', function() {
     //do sometime
     gulp.src('./dev/html/**/*.js').pipe(gulp.dest('dest/'))
 });
-
 gulp.task('concatcss', function() {
-=======
-gulp.task('concatHtml', function () {
-    //do sometime
-    gulp.src('./dev/html/index/earth/**/*').pipe(gulp.dest('dest/index/earth/'))
-});
-gulp.task('concatjs', function () {
-    //do sometime
-    gulp.src('./dev/html/**/*.js').pipe(gulp.dest('dest/'))
-});
-gulp.task('concatcss', function () {
->>>>>>> df30ba93ca9641937db10aaa157d1fccdca6c3be
     //do sometime
     gulp.src('./dev/css/*.css').pipe(gulp.dest('dest/css'))
 });
-gulp.task('concaticonfont', function () {
+gulp.task('concaticonfont', function() {
     //do sometime
     gulp.src('./dev/html/*/iconfont').pipe(gulp.dest('dest/'))
 });
@@ -82,27 +73,16 @@ gulp.task('default', function() {
         server: {
             //根目錄
             baseDir: "./",
-<<<<<<< HEAD
+            files: ['**'],
+            proxy: 'http://localhost:3000',
             index: "dest/forum/forum.html"
                 // index: "dest/btn-style/btn-style.html"
+                // index: "dest/index/swiper.html"
         }
     });
 
     gulp.watch(["sass/*.scss", "sass/**/*.scss", "dev/layout/**/*.scss", "dev/html/**/*.scss"], ['sass']).on('change', reload);
-    gulp.watch(["dev/*.html", "dev/**/*.html"], ['fileinclude']).on('change', reload);
+    gulp.watch(["dev/*.html", "dev/**/*.html"], ['fileinclude', 'concatHtml', 'concaticonfont']).on('change', reload);
     gulp.watch(["dev/*.js", "dev/**/*.js", "dev/layout/**/*.js"], ['concatjs']).on('change', reload);
-=======
-            files: ['**'],
-            proxy: 'http://localhost:3000',
-            index: "dest/index/index.html"
-            // index: "dest/btn-style/btn-style.html"
-            // index: "dest/index/swiper.html"
-        }
-    });
 
-    gulp.watch(["sass/*.scss", "sass/**/*.scss","dev/layout/**/*.scss","dev/html/**/*.scss"], ['sass']).on('change', reload);
-    gulp.watch(["dev/*.html", "dev/**/*.html"], ['fileinclude','concatHtml','concaticonfont']).on('change', reload);
-    gulp.watch(["dev/*.js", "dev/**/*.js","dev/layout/**/*.js"], ['concatjs']).on('change', reload);
-    
->>>>>>> df30ba93ca9641937db10aaa157d1fccdca6c3be
 });
